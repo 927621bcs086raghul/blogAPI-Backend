@@ -1,0 +1,2 @@
+MONGO_URI=mongodb+srv://raghulajay814_db_user:raghul%401310@cluster1310.cvgknxf.mongodb.net/blog_api?retryWrites=true&w=majority
+JWT_SECRET=b42239c9256422262f59879ecbc695cff3c9a9fffcb158ce4579cd53cfebf2e8ed69c82543e1a67eb72589154c3b3f5db11d641f4feb0cd1dae9ed61f365cd86
