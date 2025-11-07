@@ -1,14 +1,14 @@
 // server.js
-import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import postRoutes from "./routes/posts.js";
-import commentRoutes from "./routes/comments.js";
+import express from "express";
+import mongoose from "mongoose";
 import path from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/auth.js";
+import commentRoutes from "./routes/comments.js";
+import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 
 // Load environment variables from .dev file
 dotenv.config({ path: ".dev" });
@@ -21,7 +21,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://blog-app-one-ecru.vercel.app/",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true // if you want cookies/auth headers
 }));
