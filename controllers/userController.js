@@ -1,12 +1,10 @@
 import User from "../models/User.js";
-import { upload } from "../middleware/upload.js";
 
 // GET /user
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
     if (!user) return res.status(404).json({ message: "User not found" });
-
     res.json({
       message: "User profile",
       data: {

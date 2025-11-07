@@ -1,7 +1,7 @@
-import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { addToBlacklist } from "../middleware/tokenBlacklist.js";
+import User from "../models/User.js";
 
 // POST /auth/signup
 export const signup = async (req, res) => {
