@@ -23,7 +23,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "https://blog-app-one-ecru.vercel.app/",
+  origin: "https://blog-app-one-ecru.vercel.app",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true // if you want cookies/auth headers
 }));
