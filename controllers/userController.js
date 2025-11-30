@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-
+import { upload } from "../middleware/upload.js";
 // GET /user
 export const getProfile = async (req, res) => {
   try {

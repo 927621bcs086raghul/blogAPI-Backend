@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comments.js";
@@ -30,6 +32,40 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Swagger setup
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Blog API",
+      version: "1.0.0",
+      description: "API documentation for the Blog backend",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    servers: [
+      {
+        url: "http://localhost:" + (process.env.PORT || 5000),
+      },
+    ],
+  },
+  apis: [
+    path.join(__dirname, "routes", "*.js"),
+    path.join(__dirname, "controllers", "*.js"),
+  ],
+};
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use("/auth", authRoutes);
